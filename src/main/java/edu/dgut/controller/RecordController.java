@@ -2,7 +2,6 @@ package edu.dgut.controller;
 
 import edu.dgut.domain.Record;
 import edu.dgut.domain.Result;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +20,7 @@ public class RecordController {
      *         applyStatus: 0,
      * @return
      */
+
     @PostMapping("/list")
     @ResponseBody
     public Result getAll(@RequestParam("page")String page,@RequestParam("limit")String limit,
@@ -34,6 +34,7 @@ public class RecordController {
         }
         return Result.success(list,11);
     }
+
     @PostMapping("/modify")
     @ResponseBody
     public HashMap modifyStatus(@RequestParam("applyId")String applyId,@RequestParam("applyStatus")String status){
@@ -43,7 +44,8 @@ public class RecordController {
         return map;
     }
 
-    @DeleteMapping("delete")
+
+    @DeleteMapping("/delete")
     @ResponseBody
     public HashMap deleteRecord(@RequestParam("ids") String id){
         System.out.println(id);
