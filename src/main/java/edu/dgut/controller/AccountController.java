@@ -22,23 +22,6 @@ public class AccountController {
     AccountService accountService;
 
 
-    @PostMapping("/login")
-    @ResponseBody
-    public HashMap login(User userInfo){
-        HashMap map = new HashMap();
-        map.put("success",Boolean.TRUE);
-        map.put("msg","服务端出错了");
-        return map;
-    }
-    @PostMapping("/register")
-    @ResponseBody
-    public HashMap register(User userInfo){
-        System.out.println(userInfo);
-        HashMap map = new HashMap();
-        map.put("success",Boolean.TRUE);
-        return map;
-    }
-
     @PostMapping("/province/list")
     @ResponseBody
     public JSONArray getAllProvince(){
