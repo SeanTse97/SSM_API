@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.dgut.mapper.MaskMapper">
+    <select id="getMaskRecordList" resultType="edu.dgut.domain.Mask">
+        select * from maskrecord
+        <where>
+            <if test="maskName.length() != 0">
+                and maskName = #{maskName}
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <insert id="saveMask" parameterType="edu.dgut.domain.Mask">
+        insert into maskrecord values (#{orderId},#{maskName},#{maskNo},#{addUser},#{editUser},#{addTime},#{editTime},#{imageUrl})
+    </insert>
+
+    <update id="updateMaskInfo"  parameterType="edu.dgut.domain.Mask">
+        update maskrecord set addUser = #{addUser},editUser = #{editUser},addTime = #{addTime},editTime = #{editTime},maskName = #{maskName},maskNo = #{maskNo},imageUrl = #{imageUrl}
+        where orderId = #{orderId}
+    </update>
+
+    <delete id="deleteMaskInfo">
+        delete from maskrecord where orderId = #{id}
+    </delete>
+
+    <select id="getMaskStore" resultType="edu.dgut.domain.Mask2">
+        select * from maskstock
+        <where>
+            <if test="id.length() != 0">
+                and maskName = #{name}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateMaskStore" >
+        update maskstock set maskNo = maskNo + #{maskNo},editTime = #{editTime},imageUrl=#{imageUrl}
+        where maskName = #{maskName}
+    </update>
+
+    <insert id="saveMaskStockInfo">
+        insert into maskstock values (#{MaskName},#{editTime},#{MaskNo},#{imageUrl})
+    </insert>
+
+    <select id="getMRCount" resultType="Integer">
+        select count(*) from maskrecord
+        <where>
+            <if test="name.length()!=0">
+                and maskName = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>
