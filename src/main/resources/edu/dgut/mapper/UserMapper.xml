@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.dgut.mapper.UserMapper">
+    <select id="getUserByCondition" resultType="edu.dgut.domain.User2">
+        select * from user
+        <where>
+            <if test="userName.length() != 0">
+                and  userName = #{userName}
+            </if>
+            <if test="userMobile.length() != 0">
+                and userMobile = #{userMobile}
+            </if>
+            <if test="isLock.length() != 0">
+                and isLock = #{isLock}
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="getUserCount" resultType="Integer">
+        SELECT count(*) FROM `user`
+        <where>
+            <if test="userName.length() != 0">
+                and  userName = #{userName}
+            </if>
+            <if test="userMobile.length() != 0">
+                and userMobile = #{userMobile}
+            </if>
+            <if test="isLock.length() != 0">
+                and isLock = #{isLock}
+            </if>
+        </where>
+    </select>
+
+    <select id="getSingleUser" resultType="edu.dgut.domain.User2">
+        select * from user where userMobile = #{useMobile}
+    </select>
+
+    <select id="getSingleUser2" resultType="edu.dgut.domain.User2">
+        select * from user where userId = #{userId}
+    </select>
+
+    <delete id="deleteUser">
+        delete from user where userMobile = #{id}
+    </delete>
+
+    <insert id="saveUserInfo" parameterType="edu.dgut.domain.User2">
+        insert into user values (#{addUser},#{editUser},#{addTime},#{editTime},#{userId},#{userName},#{userPassword},#{userMobile},#{province},#{city},#{area},#{place},#{isLock},#{roleId})
+    </insert>
+
+    <update id="updateUserInfo" parameterType="edu.dgut.domain.User2">
+        update user set adduser = #{addUser},editUser = #{editUser},addTime = #{addTime},editTime = #{editTime},userName = #{userName},userPassword = #{userPassword},userMobile = #{userMobile},province = #{province},city = #{city},area = #{area},place = #{place},isLock = #{isLock},roleId = #{roleId}
+        where userId = #{userId}
+    </update>
+
+    <update id="resetPwd">
+        update user set userPassword = "123456" where userMobile = #{id}
+    </update>
+
+    <update id="modifyLock">
+        update user set isLock = #{isLock} where userMobile = #{userId}
+    </update>
+</mapper>
