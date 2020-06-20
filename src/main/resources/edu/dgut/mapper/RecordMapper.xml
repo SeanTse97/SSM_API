@@ -6,14 +6,14 @@
     <select id="getRecordList" resultType="edu.dgut.domain.Record">
         select * from applyrecord
         <where>
-            <if test="applyId!=null">
+            <if test="applyId.length()!=0">
                 and  applyId = #{applyId}
             </if>
-            <if test="userId!=null">
+            <if test="userId.length()!=0">
                 and  userId = #{userId}
             </if>
 
-            <if test="applyStatus!=null">
+            <if test="applyStatus.length()!=0">
                 and  applyStatus = #{applyStatus}
             </if>
         </where>
@@ -22,14 +22,14 @@
     <select id="getRecordCount" resultType="Integer">
         select count(*) from applyrecord
         <where>
-            <if test="applyId!=null">
+            <if test="applyId.length()!=0">
                 and  applyId = #{applyId}
             </if>
-            <if test="userId!=null">
+            <if test="userId.length()!=0">
                 and  userId = #{userId}
             </if>
 
-            <if test="applyStatus!=null">
+            <if test="applyStatus.length()!=0">
                 and  applyStatus = #{applyStatus}
             </if>
         </where>
