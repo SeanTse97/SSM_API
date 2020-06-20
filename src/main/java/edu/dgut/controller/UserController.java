@@ -72,6 +72,10 @@ public class UserController {
             map.put("success",Boolean.FALSE);
             map.put("msg","账号被锁定！");
             return map;
+        }if(u.getRoleId()== 2){
+            map.put("success",Boolean.FALSE);
+            map.put("msg","账号权限不足！");
+            return map;
         }
         //设置cookies信息
         Cookie cookie = new Cookie("name", u.getUserName());
