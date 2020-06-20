@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.dgut.mapper.RecordMapper">
+    <select id="getRecordList" resultType="edu.dgut.domain.Record">
+        select * from applyrecord
+        <where>
+            <if test="applyId.length()!=0">
+                and  applyId = #{applyId}
+            </if>
+            <if test="userId.length()!=0">
+                and  userId = #{userId}
+            </if>
+
+            <if test="applyStatus.length()!=0">
+                and  applyStatus = #{applyStatus}
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="getRecordCount" resultType="Integer">
+        select count(*) from applyrecord
+        <where>
+            <if test="applyId.length()!=0">
+                and  applyId = #{applyId}
+            </if>
+            <if test="userId.length()!=0">
+                and  userId = #{userId}
+            </if>
+
+            <if test="applyStatus.length()!=0">
+                and  applyStatus = #{applyStatus}
+            </if>
+        </where>
+    </select>
+    <select id="getRecordById" resultType="edu.dgut.domain.Record">
+        select * from applyrecord where applyId = #{applyId}
+    </select>
+
+    <update id="updateRecord" parameterType="edu.dgut.domain.Record">
+        update applyrecord set editTime = #{editTime},applyStatus=#{applyStatus}
+        where applyId=#{applyId}
+    </update>
+    <delete id="deleteRecord">
+        delete from applyrecord where applyId=#{applyId}
+    </delete>
+</mapper>
