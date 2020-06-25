@@ -1,6 +1,9 @@
 package edu.dgut.domain;
 
-public class Mask {
+import java.io.Serializable;
+
+public class Mask implements Serializable {
+    private static final long serialVersionUID = -7965084347687561607L;
     String addUser;
     String editUser;
     long addTime;
