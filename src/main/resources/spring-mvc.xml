@@ -11,12 +11,12 @@
 <!--    <bean id="exceptionResolver" class="edu.dgut.exception.CustomExceptionResolve"/>-->
 
 <!-- 拦截器 -->
-<!--    <mvc:interceptors>-->
-<!--        <mvc:interceptor>-->
-<!--            <mvc:mapping path="/**"/>-->
-<!--            <bean class="edu.dgut.interceptor.LoginInterceptor"/>-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="edu.dgut.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <mvc:annotation-driven/>
     <!--视图解析器-->
