@@ -19,4 +19,6 @@ public interface RecordMapper {
     public int updateRecord(Record record);
 
     public int deleteRecord(String aid);
+
+    public int saveRecord(Record record);
 }
