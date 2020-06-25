@@ -36,4 +36,9 @@ public class RecordServiceImpl implements RecordService {
     public int deleteRecord(String aid) {
         return recordMapper.deleteRecord(aid);
     }
+
+    @Override
+    public int saveRecord(Record record) {
+        return recordMapper.saveRecord(record);
+    }
 }
