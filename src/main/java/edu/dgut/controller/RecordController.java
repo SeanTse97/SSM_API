@@ -100,4 +100,25 @@ public class RecordController {
         }
         return map;
     }
+
+    @PostMapping("/save")
+    @ResponseBody
+    public HashMap addRecord(Record record){
+        HashMap map = new HashMap();
+        long addTime = new Date().getTime();
+        record.setAddTime(addTime);
+        record.setEditTime(addTime);
+        //通过10位的时间戳生成applyId
+        Long newTime = System.currentTimeMillis();
+        String time = newTime.toString().substring(0, 10);
+        record.setApplyId(time);
+
+        int i = recordService.saveRecord(record);
+        if(i == 1){
+            map.put("success",Boolean.TRUE);
+        }else{
+            map.put("success",Boolean.FALSE);
+        }
+        return map;
+    }
 }
