@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.dgut.mapper.UserMapper">
+    <cache type="edu.dgut.jedis.RedisCache"></cache>
     <select id="getUserByCondition" resultType="edu.dgut.domain.User2">
         select * from user
         <where>

@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.dgut.mapper.MaskMapper">
+    <cache type="edu.dgut.jedis.RedisCache"></cache>
     <select id="getMaskRecordList" resultType="edu.dgut.domain.Mask">
         select * from maskrecord
         <where>
