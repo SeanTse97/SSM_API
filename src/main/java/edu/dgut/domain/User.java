@@ -1,6 +1,9 @@
 package edu.dgut.domain;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = -467947441256558132L;
     String username;
     String password;
     String code;
