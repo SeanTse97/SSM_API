@@ -1,6 +1,9 @@
 package edu.dgut.domain;
 
-public class Record {
+import java.io.Serializable;
+
+public class Record implements Serializable {
+    private static final long serialVersionUID = 3211913593597022328L;
     String applyId;
     String userName;
     String userId;
