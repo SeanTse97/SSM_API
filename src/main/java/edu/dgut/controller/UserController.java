@@ -1,5 +1,6 @@
 package edu.dgut.controller;
 
+import edu.dgut.domain.CodeMsg;
 import edu.dgut.domain.Result;
 import edu.dgut.domain.User;
 import edu.dgut.domain.User2;
@@ -62,18 +63,18 @@ public class UserController {
         HashMap map = new HashMap();
         if(u == null){
             map.put("success",Boolean.FALSE);
-            map.put("msg","账号错误！");
+            map.put("msg",CodeMsg.MOBILE_NOT_EXIST.getMsg());
             return map;
         }if(!u.getUserPassword().equals(pwd)){
             map.put("success",Boolean.FALSE);
-            map.put("msg","密码错误！");
+            map.put("msg",CodeMsg.PASSWORD_ERROR.getMsg());
             return map;
         }if(u.getIsLock().equals("Y")){
             map.put("success",Boolean.FALSE);
             map.put("msg","账号被锁定！");
             return map;
         }if(u.getRoleId()== 2){
-            map.put("success",Boolean.FALSE);
+            map.put("success",Boolean.TRUE);
             map.put("msg","账号权限不足！");
             return map;
         }
